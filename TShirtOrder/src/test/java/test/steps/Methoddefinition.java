@@ -129,4 +129,27 @@ public class Methoddefinition {
 		}
 		
 	}
+	public void updatefield() throws ElementNotFoundException
+		{
+			WebElement fname=driver.findElement(By.xpath("//*[@id='firstname']"));
+			WebElement currpassword=driver.findElement(By.xpath("//*[@id='old_passwd']"));
+			
+			fname.clear();
+			fname.sendKeys("Rajaram_Edited");
+			
+			currpassword.clear();
+			currpassword.sendKeys("Rajaram_Edited");
+		}	
+		public void savePersonalInfo() throws ElementNotFoundException
+		{
+			WebElement saveelement=driver.findElement(By.xpath("//*[text()='Save']"));
+			saveelement.click();
+			WebElement msg=driver.findElement(By.xpath("//*[contains(@class,'alert-success')]"));
+			if(msg.isDisplayed()){
+				Log.info("Personal information update successful");
+			}else{
+				System.out.println(msg.getText());
+				Log.info(msg.getText(),"Make appropriate corrections");
+			}
+		}
 }
