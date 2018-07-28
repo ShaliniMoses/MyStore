@@ -1,11 +1,16 @@
 package test.steps;
 
-import org.apache.struts.action.Action;
+import java.io.File;
+import java.io.IOException;
+
 import org.mortbay.log.Log;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.apache.commons.io.FileUtils;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
@@ -17,13 +22,27 @@ public class Methoddefinition {
 	{
 		this.driver = driver;
 	}
+	
+	File sfolder = new File("C:\\Screenshot");
+	String fname = sfolder+"_"+"report"+ ".png";
 	public boolean validatewebsite()
 	{
 		WebElement logoelement=driver.findElement(By.xpath("//img[contains(@src,'logo.jpg')]"));
 		boolean status=logoelement.isDisplayed();
 		System.out.println("Status"+status);
+		
 		if(status=true){
 			Log.info("Website Exist");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else{
 			Log.info("No Such Website");
 		}
@@ -37,8 +56,28 @@ public class Methoddefinition {
 		if(status=true){
 			Log.info("Element Exist");
 			element.click();
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else{
 			Log.info("No Such Element");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return status;
 	}
@@ -51,6 +90,16 @@ public class Methoddefinition {
 			element.sendKeys(value);
 		}else{
 			Log.info("No Such Element");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return status;
@@ -64,6 +113,16 @@ public class Methoddefinition {
 			Log.info("Page Validation Successful");
 		}else{
 			Log.info("Page Validation Failed");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -124,12 +183,33 @@ public class Methoddefinition {
 		driver.switchTo().activeElement();
 		if(successmsg.isDisplayed()){
 			Log.info("T-Shirt added to cart");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else{
 			Log.info("Functionality failed");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			if (sfolder.exists() == false) {
+				sfolder.mkdirs();
+			}
+			try {
+				FileUtils.copyFile(source, new File(fname));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
-	public void updatefield() throws ElementNotFoundException
+		
+		public void updatefield() throws ElementNotFoundException
 		{
 			WebElement fname=driver.findElement(By.xpath("//*[@id='firstname']"));
 			WebElement currpassword=driver.findElement(By.xpath("//*[@id='old_passwd']"));
@@ -147,9 +227,29 @@ public class Methoddefinition {
 			WebElement msg=driver.findElement(By.xpath("//*[contains(@class,'alert-success')]"));
 			if(msg.isDisplayed()){
 				Log.info("Personal information update successful");
+				File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+				if (sfolder.exists() == false) {
+					sfolder.mkdirs();
+				}
+				try {
+					FileUtils.copyFile(source, new File(fname));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}else{
 				System.out.println(msg.getText());
 				Log.info(msg.getText(),"Make appropriate corrections");
+				File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+				if (sfolder.exists() == false) {
+					sfolder.mkdirs();
+				}
+				try {
+					FileUtils.copyFile(source, new File(fname));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 }
