@@ -1,0 +1,7 @@
+Execution Steps:
+
+1. Click on the feature file under resources-> cucumber folder.
+2. right click and run as -> cucumber feature.
+3. For Maven operations -> rt click -> maven clean
+				    -> Maven update 
+pom.xml  file is updated accordingly. 

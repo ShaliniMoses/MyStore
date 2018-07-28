@@ -1,0 +1,6 @@
+Further improvements:
+
+1. Object repository and data repository can be created seperately in any one format (Excel/XML) files.
+2. Can extend the same reusable components created for other products as well.
+3. Can use for negative scenarios as well.
+
