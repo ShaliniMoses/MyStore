@@ -71,7 +71,20 @@ public class ProductOrderTest {
 		methoddef.validatePage(signoutelement);
 		
 	}
-
+	@Then("^I click on Personal Information$")
+	public void i_click_on_Personal_Information() throws Throwable {
+		WebElement personalinfoelement=driver.findElement(By.xpath("//*[text()='My personal information']"));
+		personalinfoelement.click();
+	}
+	
+	@Then("^Update Personal Information$")
+	public void Update_Personal_Information() throws Throwable {
+		methoddef.updatefield();
+	}
+	@Then("^Click save button$")
+	public void click_save_button() throws Throwable {
+		methoddef.savePersonalInfo();
+	}
 	@Then("^I click T-Shirts$")
 	public void i_click_T_Shirts() throws Throwable {
 		WebElement tshirtoption=driver.findElement(By.xpath("//a[text()='T-shirts']"));
