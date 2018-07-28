@@ -37,5 +37,18 @@ Feature: Online Product Order
       | username                | password       | size | color|
       | someone@example.com     | Password123    | small|Orange|
 
- 
+ @UpdatePersonalInformation
+  Scenario : Update Personal Information
+    Given I open the browser
+    And  automation website exist 
+    Then I click on signin button
+    When I enter the username
+    And I enter the password
+    And Click on Login button
+    Then I validate the logged in page
+    Then I click on Personal Information
+    Then Update Personal Information
+    Then Click save button
+    Then I click on signout button
+    Then I close the browser
       
